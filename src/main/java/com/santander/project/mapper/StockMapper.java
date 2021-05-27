@@ -1,5 +1,8 @@
 package com.santander.project.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Component;
@@ -32,6 +35,11 @@ public class StockMapper {
 		dto.setDate(stock.getDate());
 		
 		return dto;
+	}
+
+	public List<StockDTO> toDto(List<Stock> listStock) {
+		
+		return listStock.stream().map(this::toDto).collect(Collectors.toList());
 	}
 
 	
